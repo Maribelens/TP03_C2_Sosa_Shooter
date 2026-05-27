@@ -1,12 +1,21 @@
 using TMPro;
 using UnityEngine;
 
-public class UiScoreManager : MonoBehaviourSingleton<UiScoreManager>
+public class UiScoreManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text scoreText;
     private int score;
 
-    protected override void OnAwaken()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            AddScore(100);
+
+        if (Input.GetKeyDown(KeyCode.R))
+            ResetScore();
+    }
+
+    private void Awake()
     {
         UpdateScoreText();
     }
