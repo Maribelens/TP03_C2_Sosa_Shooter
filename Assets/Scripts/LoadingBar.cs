@@ -6,56 +6,46 @@ using Random = UnityEngine.Random;
 
 public class LoadingBar : MonoBehaviourSingleton<LoadingBar>
 {
-    public event Action<string> onLoadingBarFinished;
-    private event Action currentCallback;
+    public event Action onLoadingBarFinished;
+
+    private Action _currentCallback;
 
     [SerializeField] private Vector2 loadingTime = new Vector2(1, 3);
     [SerializeField] private Image image;
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private CanvasGroup canvasGroup;
 
-    protected IEnumerator loadingBarCoroutine;
-    private bool isSceneLoadingYet;
+    private IEnumerator _loadingBarCoroutine;
 
-    public bool IsFinished => loadingBarCoroutine == null;
+    public bool IsFinished => _loadingBarCoroutine == null;
 
-    protected override void OnAwaken() { }
-
-    private void Start()
+    protected override void OnAwaken()
     {
-        CustomSceneManager.Instance.onSceneLoadeed += Intance_onSceneLoaded;
         SetState(false);
-    }
-
-    protected override void OnDestroyed() 
-    {
-        //if (CustomSceneManager.Instance != null)
-        CustomSceneManager.Instance.onSceneLoadeed -= Intance_onSceneLoaded;
     }
 
     public void StartLoadingBar(Action callback)
     {
-        if (loadingBarCoroutine == null)
-        {
-            currentCallback = callback;
-            loadingBarCoroutine = LoadingBarCoroutine();
-            StartCoroutine(LoadingBarCoroutine());
-        }
+        if (_loadingBarCoroutine != null) return;
+
+        _currentCallback = callback;
+        _loadingBarCoroutine = LoadingBarCoroutine();
+        StartCoroutine(_loadingBarCoroutine);
     }
 
-    IEnumerator LoadingBarCoroutine()
+    private IEnumerator LoadingBarCoroutine()
     {
         SetState(true);
+
+        _currentCallback?.Invoke();
 
         float currentTime = 0;
         float maxLoadingTime = Random.Range(loadingTime.x, loadingTime.y);
 
-        currentCallback?.Invoke(); // avisa al SceneManager que empiece a cargar
-        isSceneLoadingYet = true;
 
-        while (currentTime < maxLoadingTime)
+        while (currentTime < maxLoadingTime || !CustomSceneManager.Instance.IsSceneReady())
         {
-            if (currentTime > maxLoadingTime / 2 && isSceneLoadingYet)
+            if (!CustomSceneManager.Instance.IsSceneReady())
             {
                 yield return null;
                 continue;
@@ -66,13 +56,13 @@ public class LoadingBar : MonoBehaviourSingleton<LoadingBar>
             image.fillAmount = lerp;
             yield return null;
         }
-        loadingBarCoroutine = null;
-        SetState(false);
-    }
 
-    private void Intance_onSceneLoaded()
-    {
-        isSceneLoadingYet = false;
+        image.fillAmount = 1f;
+        CustomSceneManager.Instance.ActivateLoadedScene();
+
+        SetState(false);
+        _loadingBarCoroutine = null;
+        onLoadingBarFinished?.Invoke();
     }
 
     private void SetState(bool isOn)

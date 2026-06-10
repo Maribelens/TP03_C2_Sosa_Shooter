@@ -193,8 +193,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -225, y: 75}
-  m_SizeDelta: {x: 450, y: 150}
+  m_AnchoredPosition: {x: -150, y: 50}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159298524
 MonoBehaviour:
@@ -1235,6 +1235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomSceneManager
   dontDestroyOnLoad: 1
   sceneToLoadGameplay: Game
+  sceneToLoadMainMenu: 
+  _sceneToLoadMainMenu: {fileID: 0}
   _sceneToLoadGameplay: {fileID: 102900000, guid: e87a266be0c2e9e47abfac44005463c6, type: 3}
 --- !u!4 &601362224
 Transform:
@@ -1551,7 +1553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &657029315
 Transform:
   m_ObjectHideFlags: 0
@@ -1847,7 +1849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &711023548
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2796,7 +2798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1439649008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3051,7 +3053,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 268175834}
   - {fileID: 379328234}
-  - {fileID: 657029315}
   - {fileID: 465227501}
+  - {fileID: 657029315}
   - {fileID: 819789686}
   - {fileID: 376388578}

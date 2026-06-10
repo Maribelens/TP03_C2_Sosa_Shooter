@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UiMainMenuManager : MonoBehaviour
@@ -21,15 +19,11 @@ public class UiMainMenuManager : MonoBehaviour
     {
         if(LoadingBar.Instance)
             LoadingBar.Instance.StartLoadingBar(GoToGameplay);
-        else
-            Debug.Log("");
     }
 
     private void GoToGameplay()
     {
         if (CustomSceneManager.Instance)
             CustomSceneManager.Instance.GoToGameplay();
-        else
-            Debug.Log("");
     }
 }

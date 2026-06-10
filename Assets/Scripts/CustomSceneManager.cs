@@ -1,51 +1,62 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CustomSceneManager : MonoBehaviourSingleton<CustomSceneManager>
 {
-    public event Action onSceneLoadeed;
+    public event Action onSceneLoaded;
 
     [Header("Scenes:")]
     [SerializeField] private string sceneToLoadGameplay;
+    [SerializeField] private string sceneToLoadMainMenu;
 
 #if UNITY_EDITOR
     [Header("Inspector: ")]
+    [SerializeField] private UnityEditor.SceneAsset _sceneToLoadMainMenu;
     [SerializeField] private UnityEditor.SceneAsset _sceneToLoadGameplay;
 
     private void OnValidate()
     {
-        sceneToLoadGameplay = _sceneToLoadGameplay.name;
+        sceneToLoadMainMenu = _sceneToLoadMainMenu != null ? _sceneToLoadMainMenu.name : "";
+        sceneToLoadGameplay = _sceneToLoadGameplay != null ? _sceneToLoadGameplay.name : "";
     }
 #endif
 
+    private AsyncOperation _currentAsyncLoad;
+
+    public void GoToMainMenu()
+    {
+        LoadSceneAsync(sceneToLoadMainMenu);
+    }
+
     public void GoToGameplay()
     {
-        StartCoroutine(LoadSceneRoutine());
+        LoadSceneAsync(sceneToLoadGameplay);
     }
 
-    private IEnumerator LoadSceneRoutine()
+    private void LoadSceneAsync(string sceneName)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoadGameplay);
-        asyncLoad.allowSceneActivation = false; //clave: carga pero no activa
-
-        // Espera hasta que esté lista (progress llega a 0.9 cuando allowSceneActivation es false)
-        while (asyncLoad.progress < 0.9f)
-            yield return null;
-
-        // Avisa que terminó de cargar
-        onSceneLoadeed?.Invoke();
-
-        // Espera a que la LoadingBar diga que terminó antes de activar
-        yield return new WaitUntil(() => LoadingBar.Instance.IsFinished);
-
-        asyncLoad.allowSceneActivation = true; //recién ahora cambia la escena
+        _currentAsyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        _currentAsyncLoad.allowSceneActivation = false;
+        _currentAsyncLoad.completed += OnSceneLoadedInternal;
     }
 
-    private void OnSceneLoadedInternal(AsyncOperation obj)
+    public bool IsSceneReady()
     {
-        obj.completed -= OnSceneLoadedInternal;
-        onSceneLoadeed?.Invoke();
+        return _currentAsyncLoad != null && _currentAsyncLoad.progress >= 0.9f;
+    }
+
+    public void ActivateLoadedScene()
+    {
+        if (_currentAsyncLoad != null)
+            _currentAsyncLoad.allowSceneActivation = true;
+    }
+
+    private void OnSceneLoadedInternal(AsyncOperation operation)
+    {
+        operation.completed -= OnSceneLoadedInternal;
+        onSceneLoaded?.Invoke();
     }
 }
