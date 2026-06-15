@@ -1235,8 +1235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomSceneManager
   dontDestroyOnLoad: 1
   sceneToLoadGameplay: Game
-  sceneToLoadMainMenu: 
-  _sceneToLoadMainMenu: {fileID: 0}
+  sceneToLoadMainMenu: MainMenu
+  _sceneToLoadMainMenu: {fileID: 102900000, guid: 80a5705b7e9abc1418db46d6aaf5ac8e, type: 3}
   _sceneToLoadGameplay: {fileID: 102900000, guid: e87a266be0c2e9e47abfac44005463c6, type: 3}
 --- !u!4 &601362224
 Transform:
@@ -1563,7 +1563,7 @@ Transform:
   m_GameObject: {fileID: 657029314}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 508.0388, y: 0.00001, z: -733.0873}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2798,7 +2798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1439649008
 RectTransform:
   m_ObjectHideFlags: 0

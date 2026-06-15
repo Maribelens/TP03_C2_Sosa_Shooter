@@ -13,5 +13,5 @@ public class PoolSettingSo : ScriptableObject
 public class PoolSetting
 {
     public GameObject prefab;
-    public int quantity = 10;
+    public int quantity = 20;
 }
