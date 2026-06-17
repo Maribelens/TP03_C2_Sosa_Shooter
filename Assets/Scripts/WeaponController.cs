@@ -7,9 +7,8 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private float bulletSpeed = 30f;
     [SerializeField] private float fireRate = 0.2f;
 
-    //[Header("Feedback:")] 
-    //[SerializeField] private ParticleSystem muzzleFlash;
-    //[SerializeField] private AudioSource shootAudio;
+    [Header("Feedback:")] 
+    [SerializeField] private AudioSource shootAudio;
 
     private float _nextFireTime;
 
@@ -32,11 +31,7 @@ public class WeaponController : MonoBehaviour
         Debug.Log($"MyPoolManager.Instance es null? {MyPoolManager.Instance == null}");
 
         Bullet bullet = MyPoolManager.Instance.GetInstanceFromPool<Bullet>();
-        if(bullet == null)
-        {
-            Debug.Log("GetInstanceFromPool devolvio null");
-            return;
-        }
+        if(bullet == null) return;
 
         bullet.transform.position = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;
@@ -45,12 +40,23 @@ public class WeaponController : MonoBehaviour
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.linearVelocity = firePoint.forward * bulletSpeed;
 
-        //PlayFeedback();
+        PlayMuzzleFlashEffect();
+        if (shootAudio) shootAudio.Play();
+    }
+
+    private void PlayMuzzleFlashEffect()
+    {
+        MuzzleFlashParticle muzzle = MyPoolManager.Instance.GetInstanceFromPool<MuzzleFlashParticle>();
+        if(muzzle == null) return;
+
+        muzzle.transform.position = firePoint.position;
+        muzzle.transform.rotation = firePoint.rotation;
+        muzzle.Activate();
     }
 
     //private void PlayFeedback()
     //{
-    //    if(muzzleFlash) muzzleFlash.Play();
-    //    if(shootAudio) shootAudio.Play();
+    //    if (muzzleFlash) muzzleFlash.Play();
+    //    if (shootAudio) shootAudio.Play();
     //}
 }
