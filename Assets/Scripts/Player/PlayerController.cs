@@ -3,20 +3,20 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement speeds:")] 
+    [Header("Movement speeds:")]
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 10f;
     [SerializeField] private float crounchSpeed = 2.5f;
 
-    [Header("Jump:")] 
+    [Header("Jump:")]
     [SerializeField] private float jumpHeight = 1.5f;
     [SerializeField] private float gravity = -10f;
 
-    [Header("Crounch:")] 
+    [Header("Crounch:")]
     [SerializeField] private float standHeight = 2f;
     [SerializeField] private float crounchHeight = 1f;
 
-    [Header("Ground Check:")] 
+    [Header("Ground Check:")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.2f;
     [SerializeField] private LayerMask groundMask;
@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+        //CheckGround();
         HandleCrounch();
         HandleMovement();
         HandleJump();
@@ -81,4 +82,4 @@ public class PlayerController : MonoBehaviour
         _velocity.y += gravity * Time.deltaTime;
         _controller.Move(_velocity * Time.deltaTime);
     }
-}    
+}
