@@ -1,0 +1,2 @@
+
+public class ExplosionParticle : PoolableParticle { }
