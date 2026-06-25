@@ -56,6 +56,8 @@ public class MyPoolManager : MonoBehaviourSingleton<MyPoolManager>
                 //Create pool for this especific Type
                 CreatePool(setting.prefab, container.transform, setting.quantity, poolablesDictionary[type]);
             }
+
+            Debug.Log($"Pool inicializado: {string.Join(", ", poolablesDictionary.Keys)}");
         }
     }
 

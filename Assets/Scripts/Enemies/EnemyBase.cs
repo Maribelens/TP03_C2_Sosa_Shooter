@@ -25,10 +25,13 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
         if (_currentHealth <= 0)
             Die();
+        else
+            GetComponent<FSMManager>()?.ChangeState(EnemyStateType.Hurt);
     }
 
     private void Die()
     {
+        GetComponent<FSMManager>()?.ChangeState(EnemyStateType.Death);
         PlayDeathEffect();
         if (deathAudio) deathAudio.Play();
 

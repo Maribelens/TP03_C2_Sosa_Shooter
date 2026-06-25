@@ -26,6 +26,8 @@ public class EnemyDetector : MonoBehaviour
             playerLayer
         );
 
+        //Debug.Log($"Hits: {hits.Length} | PlayerLayer value: {playerLayer.value} | PlayerInRange: {PlayerInRange}");
+
         bool wasInRange = PlayerInRange;
         PlayerInRange = hits.Length > 0;
 
