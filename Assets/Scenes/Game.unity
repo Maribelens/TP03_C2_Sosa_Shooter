@@ -3069,7 +3069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UiLifebar
   lifeTarget: {fileID: 503282486}
-  lifeBar: {fileID: 112172850}
+  lifeBar: {fileID: 905872310}
   lifeText: {fileID: 743354365}
 --- !u!1001 &494523414
 PrefabInstance:
@@ -9936,7 +9936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0000009536743}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143713864
@@ -9986,8 +9986,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -18856,6 +18856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1635777668}
   - component: {fileID: 1635777669}
+  - component: {fileID: 1635777672}
   - component: {fileID: 1635777670}
   - component: {fileID: 1635777671}
   m_Layer: 6
@@ -18953,6 +18954,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635777667}
   m_Enabled: 1
+--- !u!114 &1635777672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635777667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10efa32c0c7709f469d946892b24bd1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraRegister
+  cameraReference: {fileID: 11400000, guid: e2ac22daba9e0a04b8a2dc1ad944af3b, type: 2}
+  mainCamera: {fileID: 1635777670}
 --- !u!1001 &1644597014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20402,7 +20417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8d285ba9bf520ac4aaa734a040cccbc0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
