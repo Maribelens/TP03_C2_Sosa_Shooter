@@ -41,7 +41,9 @@ public class Grenade : MonoBehaviour, IPoolable
 
         foreach (Collider hit in hits)
         {
-            if (hit.TryGetComponent<IDamageable>(out IDamageable target))
+            IDamageable target = hit.gameObject.GetComponentInParent<IDamageable>();
+
+            if (target != null)
                 target.TakeDamage(damage);
         }
 

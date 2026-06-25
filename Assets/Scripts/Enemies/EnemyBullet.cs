@@ -30,7 +30,9 @@ public class EnemyBullet : MonoBehaviour, IPoolable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable target))
+        IDamageable target = collision.gameObject.GetComponentInParent<IDamageable>();
+
+        if (target != null)
             target.TakeDamage(damage);
 
         Deactivate();

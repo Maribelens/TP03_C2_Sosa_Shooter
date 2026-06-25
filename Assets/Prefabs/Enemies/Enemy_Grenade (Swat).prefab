@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4744759283143082748}
   - component: {fileID: 5351932013486652883}
+  - component: {fileID: 7196386968519687795}
   - component: {fileID: 1283572307400087131}
   - component: {fileID: 8799449480132390387}
   - component: {fileID: 6972967261587965529}
@@ -170,9 +171,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81581872b705fa443bff6fc75214b6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBase
-  maxHealth: 100
-  deathAudio: {fileID: 1283572307400087131}
   scoreValue: 50
+  deathAudio: {fileID: 1283572307400087131}
+--- !u!114 &7196386968519687795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685847018237267466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed9b7dd01a0cc0b4ab421e159a2f04d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  maxHealth: 100
 --- !u!82 &1283572307400087131
 AudioSource:
   m_ObjectHideFlags: 0

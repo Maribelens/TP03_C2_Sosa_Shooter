@@ -5,9 +5,6 @@
     [SerializeField] private int damage = 10;
     [SerializeField] private float lifeTime = 3f;
 
-    //[Header("Feedback")]
-    //[SerializeField] private AudioSource impactAudio;
-
     private float _timer;
 
     public bool IsActive => gameObject.activeSelf;
@@ -32,7 +29,9 @@
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.TryGetComponent<IDamageable>(out IDamageable target))
+        IDamageable target = collision.gameObject.GetComponentInParent<IDamageable>();
+
+        if (target != null)
             target.TakeDamage(damage);
 
         PlayImpactEffect();
@@ -41,13 +40,11 @@
 
     private void PlayImpactEffect()
     {
-        //if (impactAudio) impactAudio.Play();
+        ImpactParticle impact = MyPoolManager.Instance.GetInstanceFromPool<ImpactParticle>();
+        if (impact == null) return;
 
-            ImpactParticle impact = MyPoolManager.Instance.GetInstanceFromPool<ImpactParticle>();
-            if (impact == null) return;
-
-            impact.transform.position = transform.position;
-            impact.transform.rotation = transform.rotation;
-            impact.Activate();
+        impact.transform.position = transform.position;
+        impact.transform.rotation = transform.rotation;
+        impact.Activate();
     }
 }

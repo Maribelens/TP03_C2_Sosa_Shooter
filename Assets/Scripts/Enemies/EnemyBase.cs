@@ -1,44 +1,51 @@
 using System;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour, IDamageable
+[RequireComponent(typeof(HealthSystem))]
+public class EnemyBase : MonoBehaviour
 {
-    [Header("Health")]
-    [SerializeField] private int maxHealth = 100;
-    //[SerializeField] private ParticleSystem deathEffect;
+    [Header("Score:")]
+    [SerializeField] private int scoreValue = 50;
+
+    [Header("Feedback:")]
     [SerializeField] private AudioSource deathAudio;
 
     public event Action onDeath;
-    private int _currentHealth;
 
-    [SerializeField] private int scoreValue = 50;
+    private HealthSystem _healthSystem;
+    private bool _isDead;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
-        _currentHealth = maxHealth;
+        _healthSystem = GetComponent<HealthSystem>();
+        _healthSystem.onDie += OnDie;
+        _healthSystem.onLifeUpdated += OnLifeUpdated;
     }
 
-    public void TakeDamage(int amount)
+    private void OnDestroy()
     {
-        _currentHealth -= amount;
-        Debug.Log($"{name} recibio {amount} de damage. Vida restante: {_currentHealth}");
+        _healthSystem.onDie -= OnDie;
+        _healthSystem.onLifeUpdated -= OnLifeUpdated;
+    }
 
-        if (_currentHealth <= 0)
-            Die();
-        else
+    private void OnLifeUpdated(float current, float max)
+    {
+        if (current < max)
             GetComponent<FSMManager>()?.ChangeState(EnemyStateType.Hurt);
     }
 
-    private void Die()
+    private void OnDie()
     {
+        if (_isDead) return;
+        _isDead = true;
+
         GetComponent<FSMManager>()?.ChangeState(EnemyStateType.Death);
         PlayDeathEffect();
         if (deathAudio) deathAudio.Play();
 
         onDeath?.Invoke();
         ScoreManager.Instance.AddScore(scoreValue);
-
-        Destroy(gameObject, 2f); // delay para que se vean partículas/animación
+        Destroy(gameObject, 2f);
     }
 
     private void PlayDeathEffect()
