@@ -71,24 +71,26 @@ public class UIResultScreen : MonoBehaviour
     }
     public void ShowGameOverScreen()
     {
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
         SetCanvasGroup(gameoverPanel, true);
     }
     public void ShowVictoryScreen()
     {
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
         SetCanvasGroup(gameoverPanel, true);
     }
     private void OnPlayAgainClicked()
     {
         gameManager.Resume();
-        CustomSceneManager.Instance.GoToGameplayImmediate();
+        if (CustomSceneManager.Instance)
+            CustomSceneManager.Instance.GoToGameplayImmediate();
         //SceneManager.LoadScene(1);
     }
     private void OnExitGameClicked()
     {
         gameManager.Resume();
-        CustomSceneManager.Instance.GoToMainMenuImmediate();
+        if (CustomSceneManager.Instance)
+            CustomSceneManager.Instance.GoToMainMenuImmediate();
         //SceneManager.LoadScene(0);
     }
 }
