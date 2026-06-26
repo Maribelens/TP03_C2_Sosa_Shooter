@@ -5,9 +5,9 @@ public class FSMManager : MonoBehaviour
 {
     private Animator _animator;
     private List<StateBase> _states;
-
     public StateBase CurrentState { get; private set; }
-    public StateBase PreviousState { get; private set; }
+    public EnemyStateType PreviousState { get; private set; } = EnemyStateType.None;
+    //public StateBase PreviousState { get; private set; }
 
     public void Initialize(Animator animator, EnemyController enemy, List<StateBase> states)
     {
@@ -28,11 +28,17 @@ public class FSMManager : MonoBehaviour
     {
         if (CurrentState != null && CurrentState.enemyStateType == EnemyStateType.Death) return;
 
+        if (CurrentState != null && CurrentState.enemyStateType == EnemyStateType.Hurt && nextStateType == EnemyStateType.Hurt) return;
+
+        //guardado de estado previo
+        if (nextStateType == EnemyStateType.Hurt)
+            PreviousState = CurrentState?.enemyStateType ?? EnemyStateType.Idle;
+
         StateBase next = FindState(nextStateType);
         if (next == null) return;
 
         CurrentState?.OnExit();
-        PreviousState = CurrentState;
+        //PreviousState = CurrentState;
         CurrentState = next;
         CurrentState.OnEnter();
     }
