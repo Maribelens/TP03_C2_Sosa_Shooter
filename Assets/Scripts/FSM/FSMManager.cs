@@ -7,7 +7,6 @@ public class FSMManager : MonoBehaviour
     private List<StateBase> _states;
     public StateBase CurrentState { get; private set; }
     public EnemyStateType PreviousState { get; private set; } = EnemyStateType.None;
-    //public StateBase PreviousState { get; private set; }
 
     public void Initialize(Animator animator, EnemyController enemy, List<StateBase> states)
     {
@@ -38,7 +37,6 @@ public class FSMManager : MonoBehaviour
         if (next == null) return;
 
         CurrentState?.OnExit();
-        //PreviousState = CurrentState;
         CurrentState = next;
         CurrentState.OnEnter();
     }

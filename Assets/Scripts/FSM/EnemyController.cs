@@ -46,7 +46,6 @@ public class EnemyController : MonoBehaviour
             new DeathState()
         };
         FSM.Initialize(animator, this, states);
-        //Debug.Log($"FSM inicializado - CurrentState: {FSM.CurrentState?.enemyStateType}");
     }
 
     protected virtual void Update()

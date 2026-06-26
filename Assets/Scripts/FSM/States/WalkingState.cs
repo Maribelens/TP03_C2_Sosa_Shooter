@@ -3,12 +3,8 @@ using UnityEngine.AI;
 
 public class WalkingState : StateBase
 {
-    //public virtual void Initialize(Animator animator, FSMManager fsm, EnemyController enemy)
-    //{
-    //    base.Initialize(animator, fsm, enemy);
-    //    enemyStateType = EnemyStateType.Walking;
-    //}
-    
+    private float _idleCheckTimer;
+    private float _idleCheckInterval;
     public WalkingState() => enemyStateType = EnemyStateType.Walking;
 
     public override void OnEnter()
@@ -16,6 +12,7 @@ public class WalkingState : StateBase
         Animator.SetInteger(StateHash, (int)EnemyStateType.Walking);
         Enemy.Agent.isStopped = false;
         SetRandomDestination();
+        ResetIdleTimer();
     }
 
     public override void OnUpdate()
@@ -28,6 +25,10 @@ public class WalkingState : StateBase
 
         if (!Enemy.Agent.pathPending && Enemy.Agent.remainingDistance < 0.5f)
             SetRandomDestination();
+
+        _idleCheckTimer -= Time.deltaTime;
+        if (_idleCheckTimer <= 0f)
+            FSM.ChangeState(EnemyStateType.Idle);
     }
 
     public override void OnExit()
@@ -40,7 +41,13 @@ public class WalkingState : StateBase
         Vector3 randomDirection = Random.insideUnitSphere * Enemy.PatrolRadius;
         randomDirection += Enemy.transform.position;
 
-        if(NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, Enemy.PatrolRadius, NavMesh.AllAreas))
-        Enemy.Agent.SetDestination(hit.position); 
+        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, Enemy.PatrolRadius, NavMesh.AllAreas))
+            Enemy.Agent.SetDestination(hit.position);
+    }
+
+    private void ResetIdleTimer()
+    {
+        _idleCheckInterval = Random.Range(5f, 12f);
+        _idleCheckTimer = _idleCheckInterval;
     }
 }
