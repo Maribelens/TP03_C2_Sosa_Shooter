@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,6 +33,17 @@ public class CustomSceneManager : MonoBehaviourSingleton<CustomSceneManager>
     {
         LoadSceneAsync(sceneToLoadGameplay);
     }
+
+    public void GoToMainMenuImmediate()
+    {
+        SceneManager.LoadScene(sceneToLoadMainMenu);
+    }
+
+    public void GoToGameplayImmediate()
+    {
+        SceneManager.LoadScene(sceneToLoadGameplay);
+    }
+
 
     private void LoadSceneAsync(string sceneName)
     {

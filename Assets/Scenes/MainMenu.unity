@@ -1228,7 +1228,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601362222}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d78d2ba1e215a74db71748454d937f7, type: 3}
   m_Name: 
@@ -3047,6 +3047,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UiMainMenuManager
   playButton: {fileID: 694393713}
+  creditsButton: {fileID: 1021558496}
+  exitButton: {fileID: 754047747}
+  panelCredits: {fileID: 1439649007}
+  creditsBackButton: {fileID: 159298524}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
