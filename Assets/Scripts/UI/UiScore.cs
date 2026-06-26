@@ -18,6 +18,6 @@ public class UiScore : MonoBehaviour
 
     private void UpdateScoreText(int newScore)
     {
-        scoreText.text = $"Score: {newScore}";
+        scoreText.text = $"{newScore}";
     }
 }
