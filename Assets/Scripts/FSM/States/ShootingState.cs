@@ -27,24 +27,15 @@ public class ShootingState : StateBase
 
     private void ShootBullet()
     {
-        //Debug.Log($"AttackType: {Enemy.AttackType}");
-        //Debug.Log($"MyPoolManager null? {MyPoolManager.Instance == null}");
-
         EnemyBullet bullet = MyPoolManager.Instance.GetInstanceFromPool<EnemyBullet>();
 
-        //Debug.Log($"Bullet obtenida del pool: {bullet == null}");
-        Debug.Log($"Balas activas en pool: {bullet == null}");
         if (bullet == null) return;
-
-        Debug.Log($"FirePoint posicion: {Enemy.FirePoint.position}");
-        Debug.Log($"FirePoint forward: {Enemy.FirePoint.forward}");
 
         bullet.transform.position = Enemy.FirePoint.position;
         bullet.transform.rotation = Enemy.FirePoint.rotation;
         bullet.Activate();
 
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        Debug.Log($"Rigidbody null? {rb == null}");
         rb.linearVelocity = Enemy.FirePoint.forward * 20f;
     }
 

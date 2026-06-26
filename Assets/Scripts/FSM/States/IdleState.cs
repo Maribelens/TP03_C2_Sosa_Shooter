@@ -14,7 +14,6 @@ public class IdleState : StateBase
 
     public override void OnUpdate()
     {
-        //Debug.Log($"IdleState Update - PlayerInRange: {Enemy.Detector.PlayerInRange}");
         if (Enemy.Detector.PlayerInRange)
         {
             FSM.ChangeState(EnemyStateType.Aiming);
