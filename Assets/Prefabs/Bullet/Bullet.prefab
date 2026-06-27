@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e034ed6e56bfe9042a4b76243fc7e03d, type: 2}
+  - {fileID: 2100000, guid: f9ae6000d78ff0f4f88c9c30d8b73541, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,8 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   damage: 10
   lifeTime: 3
-  impactEffect: {fileID: 2070330205914122706}
-  impactAudio: {fileID: 0}
 --- !u!82 &3091475435195641020
 AudioSource:
   m_ObjectHideFlags: 0

@@ -17,7 +17,6 @@ public class EnemyBullet : MonoBehaviour, IPoolable
 
     public void Deactivate()
     {
-        Debug.Log("EnemyBullet desactivada");
         gameObject.SetActive(false);
     }
 
