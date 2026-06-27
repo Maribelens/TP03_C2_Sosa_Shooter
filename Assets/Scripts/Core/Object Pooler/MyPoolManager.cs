@@ -18,7 +18,7 @@ public class MyPoolManager : MonoBehaviourSingleton<MyPoolManager>
     {
         if (settings == null)
         {
-            Debug.LogWarning("No hay un poolSettingsSo asignado al PoolManager");
+            //Debug.LogWarning("No hay un poolSettingsSo asignado al PoolManager");
             return;
         }
 
@@ -26,7 +26,7 @@ public class MyPoolManager : MonoBehaviourSingleton<MyPoolManager>
         {
             if (setting.prefab == null)
             {
-                Debug.LogWarning("No se contiene Prefab en el So!", gameObject);
+                //Debug.LogWarning("No se contiene Prefab en el So!", gameObject);
                 continue;
             }
 
@@ -34,7 +34,7 @@ public class MyPoolManager : MonoBehaviourSingleton<MyPoolManager>
 
             if (pooleableInterface == null)
             {
-                Debug.LogError($"El prefab {setting.prefab.name} no implementa IPooleable");
+                //Debug.LogError($"El prefab {setting.prefab.name} no implementa IPooleable");
                 continue;
             }
 
@@ -57,7 +57,7 @@ public class MyPoolManager : MonoBehaviourSingleton<MyPoolManager>
                 CreatePool(setting.prefab, container.transform, setting.quantity, poolablesDictionary[type]);
             }
 
-            Debug.Log($"Pool inicializado: {string.Join(", ", poolablesDictionary.Keys)}");
+            //Debug.Log($"Pool inicializado: {string.Join(", ", poolablesDictionary.Keys)}");
         }
     }
 
@@ -86,12 +86,12 @@ public class MyPoolManager : MonoBehaviourSingleton<MyPoolManager>
                     return poolList[i] as T;
 
             //Si llegamos aqui, nos quedamos sin objetos en la lista
-            Debug.LogWarning($"Se agotaron los objetos de tipo {type.Name} en la pool.");
+            //Debug.LogWarning($"Se agotaron los objetos de tipo {type.Name} en la pool.");
             return null;
         }
 
         //Si llegamos aqui, el tipo solicitado no existe en la pool.
-        Debug.LogWarning($"El tipo {type.Name} no existe en la pool. Falta agregarlo al So.");
+        //Debug.LogWarning($"El tipo {type.Name} no existe en la pool. Falta agregarlo al So.");
         return null;
     }
 }
