@@ -31,11 +31,6 @@ public class UiMainMenuManager : MonoBehaviour
             CustomSceneManager.Instance.GoToGameplayImmediate();
     }
 
-    //if (CustomSceneManager.Instance != null)
-    //    CustomSceneManager.Instance.GoToGameplay();
-    //else
-    //    Debug.LogError("CustomSceneManager no está disponible en MainMenu");
-
     private void OnCreditsClicked()
     {
         panelCredits.SetActive(true);

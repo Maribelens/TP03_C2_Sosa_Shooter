@@ -46,8 +46,6 @@ public class GameManager : MonoBehaviour
 
         if (_stateActions.TryGetValue(newState, out var action))
         action.Invoke();
-        else
-            Debug.LogError("StateActions no inicializado o estado no encontrado: " + newState);
     }
 
     private void ApplyTimeScale(float scale)

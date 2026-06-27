@@ -15,7 +15,6 @@ public class TestTarget : MonoBehaviour, IDamageable
     public void TakeDamage(float amount)
     {
         _currentHealth -= amount;
-        Debug.Log($"{name} recibio {amount} de damage. Vida restante: {_currentHealth}");
 
         if (_currentHealth <= 0)
         {

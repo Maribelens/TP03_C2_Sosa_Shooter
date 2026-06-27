@@ -28,7 +28,6 @@ public class WeaponController : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log($"MyPoolManager.Instance es null? {MyPoolManager.Instance == null}");
 
         Bullet bullet = MyPoolManager.Instance.GetInstanceFromPool<Bullet>();
         if(bullet == null) return;
@@ -53,10 +52,4 @@ public class WeaponController : MonoBehaviour
         muzzle.transform.rotation = firePoint.rotation;
         muzzle.Activate();
     }
-
-    //private void PlayFeedback()
-    //{
-    //    if (muzzleFlash) muzzleFlash.Play();
-    //    if (shootAudio) shootAudio.Play();
-    //}
 }

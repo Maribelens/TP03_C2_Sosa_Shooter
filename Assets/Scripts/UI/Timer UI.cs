@@ -19,8 +19,6 @@ public class UiTimer : MonoBehaviour
 
     private void UpdateTimerText(float remainingTime)
     {
-        //remainingTime = Mathf.Max(0f, remainingTime);
-        
         int minutes = Mathf.FloorToInt(remainingTime / 60f);
         int seconds = Mathf.FloorToInt(remainingTime % 60f);
         timerText.text = $"{minutes:00}:{seconds:00}";
