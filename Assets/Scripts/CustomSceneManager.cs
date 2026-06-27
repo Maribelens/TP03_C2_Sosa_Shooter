@@ -34,16 +34,22 @@ public class CustomSceneManager : MonoBehaviourSingleton<CustomSceneManager>
         LoadSceneAsync(sceneToLoadGameplay);
     }
 
+    {
+        Time.timeScale = 1f;
+        LoadSceneImmediate(sceneToLoadGameplay);
+    }
+
     public void GoToMainMenuImmediate()
     {
-        SceneManager.LoadScene(sceneToLoadMainMenu);
+        Time.timeScale = 1f;
+        LoadSceneImmediate(sceneToLoadMainMenu);
     }
 
-    public void GoToGameplayImmediate()
+    private void LoadSceneImmediate(string sceneName)
     {
-        SceneManager.LoadScene(sceneToLoadGameplay);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        asyncLoad.allowSceneActivation = true; // activa inmediatamente
     }
-
 
     private void LoadSceneAsync(string sceneName)
     {

@@ -1,7 +1,4 @@
-using System;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UiPause : MonoBehaviour
@@ -83,7 +80,7 @@ public class UiPause : MonoBehaviour
 
     private void OnExitClicked()
     {
-        gameManager.Resume(); // aseguramos que el estado vuelva a Playing
+        gameManager.Resume();
         CustomSceneManager.Instance.GoToMainMenuImmediate();
     }
 
@@ -94,7 +91,6 @@ public class UiPause : MonoBehaviour
 
     private void SetStateCanvasGroup(CanvasGroup canvasGroup, bool state)
     {
-        // Activa o desactiva visibilidad e interacción de un panel.
         canvasGroup.alpha = state ? 1 : 0;
         canvasGroup.interactable = state;
         canvasGroup.blocksRaycasts = state;
