@@ -39,6 +39,7 @@ public class GameTimer : MonoBehaviour
         {
             _remainingTime = 0f;
             _isRunning = false;
+            onTimeUpdated.Invoke(_remainingTime);
             onTimeOut?.Invoke();
         }
     }

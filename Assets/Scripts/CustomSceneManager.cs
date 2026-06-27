@@ -34,6 +34,7 @@ public class CustomSceneManager : MonoBehaviourSingleton<CustomSceneManager>
         LoadSceneAsync(sceneToLoadGameplay);
     }
 
+    public void GoToGameplayImmediate()
     {
         Time.timeScale = 1f;
         LoadSceneImmediate(sceneToLoadGameplay);
