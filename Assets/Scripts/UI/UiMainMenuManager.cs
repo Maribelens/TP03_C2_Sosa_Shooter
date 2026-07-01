@@ -14,6 +14,8 @@ public class UiMainMenuManager : MonoBehaviour
 
     public void Awake()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         AddButtonsListeners();
     }
 
@@ -56,5 +58,7 @@ public class UiMainMenuManager : MonoBehaviour
     {
         playButton.onClick.RemoveAllListeners();
         creditsButton.onClick.RemoveAllListeners();
+        exitButton.onClick.RemoveAllListeners();
+        creditsBackButton.onClick.RemoveAllListeners();
     }
 }

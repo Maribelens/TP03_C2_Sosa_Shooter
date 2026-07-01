@@ -55,13 +55,15 @@ public class UiPause : MonoBehaviour
         if (state == GameManager.GameState.Paused)
         {
             SetStateCanvasGroup(panelMainPause, true);
-            //Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else if (state == GameManager.GameState.Playing)
         {
             SetStateCanvasGroup(panelMainPause, false);
             SetStateCanvasGroup(panelSettings, false);
-            //Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 

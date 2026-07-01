@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 159298526}
   - component: {fileID: 159298525}
   - component: {fileID: 159298524}
+  - component: {fileID: 159298527}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -278,6 +279,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159298521}
   m_CullTransparentMesh: 1
+--- !u!114 &159298527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159298521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573f6a2d5439f8f40ae1b7dceaa0219b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiButtonFx
+  button: {fileID: 159298524}
+  hoverScale: 1.2
+  animDuration: 0.2
+  animationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &199784648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,6 +1427,7 @@ GameObject:
   - component: {fileID: 694393715}
   - component: {fileID: 694393714}
   - component: {fileID: 694393713}
+  - component: {fileID: 694393716}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -1514,6 +1537,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694393710}
   m_CullTransparentMesh: 1
+--- !u!114 &694393716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694393710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573f6a2d5439f8f40ae1b7dceaa0219b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiButtonFx
+  button: {fileID: 694393713}
+  hoverScale: 1.2
+  animDuration: 0.2
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6989889
+      value: 0.85246414
+      inSlope: -0.022464354
+      outSlope: -0.022464354
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.26790118
+    - serializedVersion: 3
+      time: 0.9960327
+      value: 0.50240326
+      inSlope: -2.5962527
+      outSlope: -2.5962527
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10880859
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &754047744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1526,6 +1597,7 @@ GameObject:
   - component: {fileID: 754047749}
   - component: {fileID: 754047748}
   - component: {fileID: 754047747}
+  - component: {fileID: 754047750}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -1635,6 +1707,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754047744}
   m_CullTransparentMesh: 1
+--- !u!114 &754047750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754047744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573f6a2d5439f8f40ae1b7dceaa0219b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiButtonFx
+  button: {fileID: 754047747}
+  hoverScale: 1.2
+  animDuration: 0.2
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6989889
+      value: 0.85246414
+      inSlope: -0.022464354
+      outSlope: -0.022464354
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.26790118
+    - serializedVersion: 3
+      time: 0.9960327
+      value: 0.50240326
+      inSlope: -2.5962527
+      outSlope: -2.5962527
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10880859
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &973261237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,6 +1804,7 @@ GameObject:
   - component: {fileID: 1021558498}
   - component: {fileID: 1021558497}
   - component: {fileID: 1021558496}
+  - component: {fileID: 1021558499}
   m_Layer: 5
   m_Name: Credits button
   m_TagString: Untagged
@@ -1793,6 +1914,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021558493}
   m_CullTransparentMesh: 1
+--- !u!114 &1021558499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021558493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573f6a2d5439f8f40ae1b7dceaa0219b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiButtonFx
+  button: {fileID: 1021558496}
+  hoverScale: 1.2
+  animDuration: 0.2
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6989889
+      value: 0.85246414
+      inSlope: -0.022464354
+      outSlope: -0.022464354
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.26790118
+    - serializedVersion: 3
+      time: 0.9960327
+      value: 0.50240326
+      inSlope: -2.5962527
+      outSlope: -2.5962527
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10880859
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1158632608
 GameObject:
   m_ObjectHideFlags: 0
